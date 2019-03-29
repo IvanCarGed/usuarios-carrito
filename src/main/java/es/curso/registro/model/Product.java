@@ -31,6 +31,9 @@ public class Product {
     @Column (name = "precio")
     private float precio;
     
+    @OneToMany(mappedBy = "producto")
+    private Set<OrderLine> orderLines;
+    
 	public Product() {
 
 	}
@@ -43,8 +46,7 @@ public class Product {
 		this.precio = precio;
 	}
 	
-    @OneToMany(mappedBy = "orderLines")
-    private Set<OrderLine> orderLines;
+
 	
 	public Integer getIdProduct() {
 		return idProduct;

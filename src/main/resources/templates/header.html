@@ -35,7 +35,7 @@
 				<div id="navbar" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
 						<li sec:authorize="hasRole('ROLE_ADMIN')"><a
-							th:href="@{/admin/home}">Administrar</a></li>
+							th:href="@{/admin/home}">Administrator</a></li>
 						<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Salir</a></li>
 
 					</ul>

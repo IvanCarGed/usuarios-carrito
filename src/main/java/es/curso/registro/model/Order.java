@@ -8,8 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "order")
 public class Order {
 
 	@Id
@@ -18,7 +20,7 @@ public class Order {
 	private Integer idOrder;
 
 	@Column(name = "precioFinal")
-	private Float precioFinal;
+	private Double precioFinal;
 
 	@Column(name = "direccion")
 	private String direccion;
@@ -29,7 +31,7 @@ public class Order {
 	@Column(name = "comentario")
 	private String comentario;
 
-	@OneToMany(mappedBy = "orderLines")
+	@OneToMany(mappedBy = "pedido")
 	private Set<OrderLine> orderLines;
 
 	/**
@@ -39,7 +41,7 @@ public class Order {
 	 * @param comentario
 	 * @param orderLines
 	 */
-	public Order(Float precioFinal, String direccion, String estado, String comentario, Set<OrderLine> orderLines) {
+	public Order(Double precioFinal, String direccion, String estado, String comentario, Set<OrderLine> orderLines) {
 		this.precioFinal = precioFinal;
 		this.direccion = direccion;
 		this.estado = estado;
@@ -61,11 +63,11 @@ public class Order {
 		this.idOrder = idOrder;
 	}
 
-	public Float getPrecioFinal() {
+	public Double getPrecioFinal() {
 		return precioFinal;
 	}
 
-	public void setPrecioFinal(Float precioFinal) {
+	public void setPrecioFinal(Double precioFinal) {
 		this.precioFinal = precioFinal;
 	}
 
@@ -96,8 +98,6 @@ public class Order {
 	public Set<OrderLine> getOrderLines() {
 		return orderLines;
 	}
-	
-	
 
 	public void setOrderLines(Set<OrderLine> orderLines) {
 		this.orderLines = orderLines;
