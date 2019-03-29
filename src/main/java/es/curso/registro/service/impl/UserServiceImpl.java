@@ -1,4 +1,4 @@
-package es.curso.registro.service;
+package es.curso.registro.service.impl;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -19,6 +19,7 @@ import es.curso.registro.model.Role;
 import es.curso.registro.model.User;
 import es.curso.registro.repository.RoleRepository;
 import es.curso.registro.repository.UserRepository;
+import es.curso.registro.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {

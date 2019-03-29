@@ -1,4 +1,4 @@
-package es.curso.registro.service;
+package es.curso.registro.service.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import es.curso.registro.model.Product;
 import es.curso.registro.repository.ProductRepository;
+import es.curso.registro.service.ProductService;
 
 @Service
 public class ProductServiceImpl implements ProductService {

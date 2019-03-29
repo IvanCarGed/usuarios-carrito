@@ -1,4 +1,4 @@
-package es.curso.registro.repository;
+package es.curso.registro.repository.impl;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import es.curso.registro.generic.GenericDaoHibernate;
 import es.curso.registro.model.Role;
+import es.curso.registro.repository.RoleRepository;
 
 @Repository
 public class RoleRepositoryImpl extends GenericDaoHibernate<Role, Long> implements RoleRepository  {
