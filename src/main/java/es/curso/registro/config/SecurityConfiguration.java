@@ -14,9 +14,7 @@ import es.curso.registro.service.UserService;
 import es.curso.registro.util.Constantes;
 
 @Configuration
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-
-	
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {	
 	
     @Autowired
     private UserService userService;
