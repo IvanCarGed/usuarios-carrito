@@ -96,6 +96,8 @@ public class Order {
 	public Set<OrderLine> getOrderLines() {
 		return orderLines;
 	}
+	
+	
 
 	public void setOrderLines(Set<OrderLine> orderLines) {
 		this.orderLines = orderLines;
