@@ -9,7 +9,7 @@ public interface ProductService {
 
 	List<Product> getAll();
 	
-	Optional<Product> findEstadoById(Integer idProduct);
+	Product getProductById(Integer idProduct);
 	
 	void addProduct(String nombre, String descripcion, String marca, float precio);
 	
@@ -18,6 +18,4 @@ public interface ProductService {
 	void updateProduct(Product product);
 	
 	void deleteProduct(Integer idProduct);
-	
-	List<Product> find(Product product);
 }
