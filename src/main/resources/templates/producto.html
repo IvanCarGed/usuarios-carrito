@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+
+<title>Registro de Producto</title>
+</head>
+<body>
+	<div th:replace="/header :: header"></div>
+	<br>
+	<br>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<form th:action="@{/addProduct}" th:object="${producto1}"
+					method="post">
+					<div class="form-group">
+						<label for="nombre" class="control-label">Nombre</label> <input
+							id="nombre" class="form-control" th:field="*{nombre}" />
+					</div>
+					<div class="form-group">
+						<label for="descripcion" class="control-label">Descripción</label>
+						<input id="descripcion" class="form-control"
+							th:field="*{descripcion}" />
+					</div>
+					<div class="form-group">
+						<label for="marca" class="control-label">Marca</label> <input
+							id="marca" class="form-control" th:field="*{marca}" />
+					</div>
+					<div class="form-group">
+						<label for="precio" class="control-label">Precio</label> <input
+							id="precio" class="form-control" th:field="*{precio}" />
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-success">Añadir
+							producto</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+</body>
+</html>

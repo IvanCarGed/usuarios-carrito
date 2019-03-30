@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css"
 	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
 
-<title>Registration</title>
+<title>Administración de Usuarios</title>
 </head>
 <body>
 	<div th:replace="/header :: header"></div>
@@ -19,13 +19,13 @@
 	<br>
 
 	<div class="container">
-		<h2>Registro de usuarios usando spring - boot</h2>
+		<h2>Administración de Usuarios</h2>
 		<p>
 			Bienvenido <span sec:authentication="principal.username">Usuario</span>
 		</p>
 	</div>
 	<div class="container">
-		<h1>Customer Table</h1>
+		<h1>Usuarios</h1>
 		<div class="row col-md-7 table-responsive">
 			<table id="customerTable" class="table">
 				<thead>
@@ -33,7 +33,7 @@
 						<th>Nombre</th>
 						<th>Apellido</th>
 						<th>Email</th>
-						<th>Acciones</th>
+						<th>Privilegios</th>
 
 					</tr>
 				</thead>
@@ -50,7 +50,7 @@
 								method="get">
 								<button th:id="'table_entry_childs_button_' + ${user.id}"
 									type="submit">
-									<i>Quitar privilegios</i>
+									<i>Quitar</i>
 								</button>
 							</form>
 							<form action="#"
@@ -58,7 +58,7 @@
 								method="get">
 								<button th:id="'table_entry_childs_button_' + ${user.id}"
 									type="submit">
-									<i>Dar privilegios</i>
+									<i>Dar</i>
 								</button>
 							</form>
 							

@@ -5,10 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import es.curso.registro.model.Role;
 import es.curso.registro.model.User;
+import es.curso.registro.service.ProductService;
 import es.curso.registro.service.UserService;
 import es.curso.registro.util.Constantes;
 
@@ -18,6 +18,9 @@ public class MainController {
 	@Autowired
 	UserService userService;
 	
+	@Autowired
+	ProductService productService;
+	
     @GetMapping("/")
     public String root() {
         return "index";
@@ -26,6 +29,17 @@ public class MainController {
     @GetMapping("/login")
     public String login(Model model) {
         return "login";
+    }
+    
+    @GetMapping("/producto")
+    public String producto(Model model) {
+        return "producto";
+    }
+    
+    @GetMapping("/list-productos")
+    public String listProductos(Model model) {
+    	model.addAttribute("listaProductos", productService.getAll());
+        return "list-productos";
     }
 
     @GetMapping("/user")

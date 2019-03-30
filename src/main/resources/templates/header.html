@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css"
 	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
 
-<title>Registro</title>
+<title>IE-Shop</title>
 </head>
 <body>
 	<div th:fragment="header">
@@ -27,15 +27,17 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#" th:href="@{/}">Registro y
-						login</a>
+					<a class="navbar-brand" href="#" th:href="@{/}">IE-Shop</a>
 				</div>
 
 
 				<div id="navbar" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
+						<li><a th:href="@{/list-productos}">Productos</a></li>
 						<li sec:authorize="hasRole('ROLE_ADMIN')"><a
-							th:href="@{/admin/home}">Administrator</a></li>
+							th:href="@{/producto}">Añadir Producto</a></li>
+						<li sec:authorize="hasRole('ROLE_ADMIN')"><a
+							th:href="@{/admin/home}">Administrar Cuentas</a></li>
 						<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Salir</a></li>
 
 					</ul>
