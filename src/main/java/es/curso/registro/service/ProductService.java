@@ -1,8 +1,6 @@
 package es.curso.registro.service;
 
 import java.util.List;
-import java.util.Optional;
-
 import es.curso.registro.model.Product;
 
 public interface ProductService {
