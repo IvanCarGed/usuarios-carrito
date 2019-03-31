@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table (name = "order_line")
 public class OrderLine {
 
 	@Id
