@@ -31,11 +31,6 @@ public class MainController {
         return "login";
     }
     
-    @GetMapping("/producto")
-    public String producto(Model model) {
-        return "producto";
-    }
-    
     @GetMapping("/list-productos")
     public String listProductos(Model model) {
     	model.addAttribute("listaProductos", productService.getAll());
@@ -47,10 +42,10 @@ public class MainController {
         return "user/index";
     }
   
-	
-	  @GetMapping("/index") public String userIndex2() { return "index"; }
-	 
-    
+    @GetMapping("/index")
+    public String userIndex2() {
+        return "index";
+    }
     @GetMapping("/admin/home")
     public String listaUsuarios(Model model) {
         model.addAttribute("listaUsuarios" , userService.getAll() );
