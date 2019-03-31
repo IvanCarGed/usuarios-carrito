@@ -47,10 +47,10 @@ public class MainController {
         return "user/index";
     }
   
-    @GetMapping("/index")
-    public String userIndex2() {
-        return "index";
-    }
+	
+	  @GetMapping("/index") public String userIndex2() { return "index"; }
+	 
+    
     @GetMapping("/admin/home")
     public String listaUsuarios(Model model) {
         model.addAttribute("listaUsuarios" , userService.getAll() );

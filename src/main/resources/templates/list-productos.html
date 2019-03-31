@@ -27,7 +27,7 @@
 						<th>Descripción</th>
 						<th>Marca</th>
 						<th>Precio</th>
-						<th>Acciones</th>
+						<th sec:authorize="hasRole('ROLE_ADMIN')">Acciones</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -40,18 +40,18 @@
 						<td th:text="${producto.precio}"></td>
 						<td>
 							<form action="#"
-								th:action="@{/updateProduct} + ${{producto.idProduct}}"
+								th:action="@{/admin/updateProduct/} + ${{producto.idProduct}}"
 								method="get">
 								<button th:id="'table_entry_childs_button_' + ${producto.idProduct}"
-									type="submit">
+									type="submit" sec:authorize="hasRole('ROLE_ADMIN')">
 									<i>Modificar</i>
 								</button>
 							</form>
 							<form action="#"
-								th:action="@{/deleteProduct} + ${{producto.idProduct}}"
+								th:action="@{/admin/deleteProduct/} + ${{producto.idProduct}}"
 								method="get">
 								<button th:id="'table_entry_childs_button_' + ${producto.idProduct}"
-									type="submit">
+									type="submit" sec:authorize="hasRole('ROLE_ADMIN')">
 									<i>Eliminar</i>
 								</button>
 							</form>							
