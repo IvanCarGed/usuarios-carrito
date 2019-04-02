@@ -50,7 +50,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public Product getProductById(Integer id) {		
-		return productRepository.getOne(id);
+		return productRepository.findById(id).get();
 	}
 
 }
