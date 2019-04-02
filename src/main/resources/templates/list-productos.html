@@ -25,17 +25,17 @@
 				th:object="${producto}" method="post">
 				<div class="form-group">
 					<label for="nombre" class="control-label"></label> <input
-						class="form-control" th:field="*{nombre}" type="text"
+						class="form-control form-control-info" th:field="*{nombre}" type="text"
 						placeholder="Nombre" />
 				</div>
 				<div class="form-group">
 					<label for="descripcion" class="control-label"></label> <input
-						id="descripcion" th:field="*{descripcion}" class="form-control"
+						id="descripcion" th:field="*{descripcion}" class="form-control form-control-success"
 						type="text" placeholder="Descripción" />
 				</div>
 				<div class="form-group">
 					<label for="precio" class="control-label"></label> <input
-						id="precio" class="form-control" th:field="*{precio}"
+						id="precio" class="form-control form-control-success" th:field="*{precio}"
 						type="number" step="any" />
 				</div>
 				<button class="btn btn-outline-info my-2 my-sm-0" type="submit">Buscar</button>
@@ -45,13 +45,13 @@
 			style="display: flex; align-items: flex-end; flex-flow: row wrap;">
 			<div th:each="producto, rowStat: ${listaProductos}"
 				class="col-sm-6 col-md-4 col-lg-3 mt-4">
-				<div class="card card-inverse card-info">
+				<div class="card text-white bg-info">
 					<img class="card-img-top" src="..." alt="Imagen producto">
 					<div class="card-header bg-transparent"
 						th:text="${producto.precio} + ' €'"></div>
 					<div class="card-block">
 						<h5 class="card-title" th:text="${producto.nombre}"></h5>
-						<h6 class="card-subtitle mb-2 text-muted"
+						<h6 class="card-subtitle mb-2"
 							th:text="${producto.marca}"></h6>
 
 						<p class="card-text" th:text="${producto.descripcion}"></p>

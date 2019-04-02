@@ -8,6 +8,10 @@
 
 <link rel="stylesheet" type="text/css"
 	th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}" />
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+	crossorigin="anonymous">
 
 <title>Administración de Usuarios</title>
 </head>
@@ -39,7 +43,7 @@
 								method="get">
 								<button th:id="'table_entry_childs_button_' + ${user.id}"
 									type="submit">
-									<i>Quitar</i>
+									<i class="fas fa-user"></i>
 								</button>
 							</form>
 							<form action="#"
@@ -47,10 +51,10 @@
 								method="get">
 								<button th:id="'table_entry_childs_button_' + ${user.id}"
 									type="submit">
-									<i>Dar</i>
+									<i class="fas fa-user-tie"></i>
 								</button>
 							</form>
-							
+
 						</td>
 					</tr>
 				</tbody>
