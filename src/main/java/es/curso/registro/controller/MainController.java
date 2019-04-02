@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import es.curso.registro.model.Product;
 import es.curso.registro.model.Role;
 import es.curso.registro.model.User;
 import es.curso.registro.service.ProductService;
@@ -33,6 +34,7 @@ public class MainController {
     
     @GetMapping("/list-productos")
     public String listProductos(Model model) {
+    	model.addAttribute("producto", new Product());
     	model.addAttribute("listaProductos", productService.getAll());
         return "list-productos";
     }

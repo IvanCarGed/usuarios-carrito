@@ -51,5 +51,12 @@ public class ProductController {
 		return "redirect:/list-productos";
 		
 	}
+	
+    @PostMapping(value = "/searchProduct")
+	public String searchProduct (Model model, Product producto) {
+    	model.addAttribute("producto", new Product());
+		model.addAttribute("listaProductos", productService.buscar(producto));
+		return "list-productos";
+    }
 
 }

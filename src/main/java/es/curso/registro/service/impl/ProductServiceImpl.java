@@ -53,4 +53,9 @@ public class ProductServiceImpl implements ProductService {
 		return productRepository.findById(id).get();
 	}
 
+	@Override
+	public List<Product> buscar(Product product) {
+		return productRepository.filtrar(product.getNombre(), product.getDescripcion(), product.getPrecio());
+	}
+
 }

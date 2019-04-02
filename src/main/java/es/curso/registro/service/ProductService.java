@@ -16,4 +16,6 @@ public interface ProductService {
 	void updateProduct(Product product);
 	
 	void deleteProduct(Integer idProduct);
+	
+	List<Product> buscar(Product product);
 }
