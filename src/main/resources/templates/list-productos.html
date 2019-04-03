@@ -67,39 +67,7 @@
 						<h5 class="card-title" th:text="${producto.nombre}"></h5>
 						<h6 class="card-subtitle mb-2"
 							th:text="${producto.marca}"></h6>
-
-					<tr th:each="producto, rowStat: ${listaProductos}"
-						th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
-						<td th:text="${producto.nombre}"></td>
-						<td th:text="${producto.descripcion}"></td>
-						<td th:text="${producto.marca}"></td>
-						<td th:text="${producto.precio}"></td>
-						<td><a
-							th:href="'/addOrderLine?idProduct='+${producto.idProduct}"
-							class="btn">Añadir al Carrito</a></td>
-						<td sec:authorize="hasRole('ROLE_ADMIN')">
-							<form action="#"
-								th:action="@{/updateProduct/} + ${{producto.idProduct}}"
-								method="get">
-								<button
-									th:id="'table_entry_childs_button_' + ${producto.idProduct}"
-									type="submit">
-									<i>Modificar</i>
-								</button>
-							</form>
-							<form action="#"
-								th:action="@{/deleteProduct/} + ${{producto.idProduct}}"
-								method="get">
-								<button
-									th:id="'table_entry_childs_button_' + ${producto.idProduct}"
-									type="submit">
-									<i>Eliminar</i>
-								</button>
-							</form>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+					
 						<p class="card-text" th:text="${producto.descripcion}"></p>
 					</div>
 					<div class="card-footer">
@@ -118,6 +86,8 @@
 			</div>
 		</div>
 	</div>
+	
+	
 	<div class="container">
 		<h1>Carrito</h1>
 		<div class="row col-md-7 table-responsive">
@@ -154,3 +124,7 @@
 
 </body>
 </html>
+
+<a
+							th:href="'/addOrderLine?idProduct='+${producto.idProduct}"
+							class="btn">Añadir al Carrito</a>

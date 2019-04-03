@@ -9,7 +9,7 @@ public interface ProductService {
 
 	List<Product> getAll();
 	
-	Optional<Product> getProductById(Integer idProduct);
+	Product getProductById(Integer idProduct);
 	
 	void addProduct(String nombre, String descripcion, String marca, float precio);
 	

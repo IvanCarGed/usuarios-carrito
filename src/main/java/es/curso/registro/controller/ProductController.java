@@ -35,7 +35,7 @@ public class ProductController {
 	
     @GetMapping(value = "/updateProduct/{idProduct}")
 	public String updateProduct (Model model, @PathVariable("idProduct") Integer idProduct) {
-		Optional<Product> producto = productService.getProductById(idProduct);
+		Product producto = productService.getProductById(idProduct);
 		model.addAttribute("updateProduct", producto);
 		return "updateProduct";
     }

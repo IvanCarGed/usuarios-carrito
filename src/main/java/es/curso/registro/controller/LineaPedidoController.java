@@ -31,7 +31,7 @@ public class LineaPedidoController {
 	@GetMapping(value = "/addOrderLine")
 	public String addOrderLine(Model model, @RequestParam Integer idProduct, HttpSession session) {
 		List<LineaPedido> lineasPedido = (List<LineaPedido>) session.getAttribute("orderLines");
-		Product producto = productService.getProductById(idProduct).get();
+		Product producto = productService.getProductById(idProduct);
 
 		for (int i = 0; i < lineasPedido.size(); i++) {
 			if (lineasPedido.get(i).getProducto().getIdProduct().equals(idProduct)) {
