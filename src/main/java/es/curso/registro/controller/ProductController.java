@@ -1,13 +1,11 @@
 package es.curso.registro.controller;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import es.curso.registro.model.Product;
 import es.curso.registro.service.ProductService;
@@ -25,16 +23,16 @@ public class ProductController {
 		
 	}
 	
-	@GetMapping (value = "/deleteProduct/{idProduct}")
-	public String deleteProduct (Model model, @PathVariable("idProduct") Integer idProduct) {
+	@GetMapping (value = "/deleteProduct")
+	public String deleteProduct (Model model, @RequestParam Integer idProduct) {
 		productService.deleteProduct(idProduct);
 		return "redirect:/list-productos";
 		
 	}
 	
 	
-    @GetMapping(value = "/updateProduct/{idProduct}")
-	public String updateProduct (Model model, @PathVariable("idProduct") Integer idProduct) {
+    @GetMapping(value = "/updateProduct")
+	public String updateProduct (Model model, @RequestParam Integer idProduct) {
 		Product producto = productService.getProductById(idProduct);
 		model.addAttribute("updateProduct", producto);
 		return "updateProduct";
@@ -54,5 +52,11 @@ public class ProductController {
 		
 	}
 	
+    @PostMapping(value = "/searchProduct")
+	public String searchProduct (Model model, Product producto) {
+    	model.addAttribute("producto", new Product());
+		model.addAttribute("listaProductos", productService.buscar(producto));
+		return "list-productos";
+    }
 
 }
