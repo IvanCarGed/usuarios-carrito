@@ -12,7 +12,7 @@ import es.curso.registro.service.ProductService;
 
 @Service
 public class ProductServiceImpl implements ProductService {
-	
+
 	@Autowired
 	ProductRepository productRepository;
 
@@ -25,19 +25,19 @@ public class ProductServiceImpl implements ProductService {
 	public void addProduct(String nombre, String descripcion, String marca, float precio) {
 		Product producto = new Product(nombre, descripcion, marca, precio);
 		productRepository.save(producto);
-		
+
 	}
 
 	@Override
 	public void addProduct(Product product) {
 		productRepository.save(product);
-		
+
 	}
 
 	@Override
 	public void updateProduct(Product product) {
 		productRepository.save(product);
-		
+
 	}
 
 	@Override
@@ -51,6 +51,18 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Optional<Product> getProductById(Integer id) {		
 		return productRepository.findById(id);
+	public Product getProductById(Integer id) {		
+		return productRepository.findById(id).get();
+	}
+
+	@Override
+	public List<Product> buscar(Product product) {
+		if (product.getPrecio() > 0.0) {
+			return productRepository.filtrar1(product.getNombre(), product.getDescripcion(), product.getPrecio());
+		} else {
+			return productRepository.filtrar2(product.getNombre(), product.getDescripcion());
+		}
+
 	}
 
 }

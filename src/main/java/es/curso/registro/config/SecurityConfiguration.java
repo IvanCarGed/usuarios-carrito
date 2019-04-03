@@ -1,3 +1,4 @@
+
 package es.curso.registro.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                     .antMatchers(
                             "/registration**",
+                            "/searchProduct**",
                             "/list-productos**",
                             "/addOrderLine**",
                             "/addOrder",

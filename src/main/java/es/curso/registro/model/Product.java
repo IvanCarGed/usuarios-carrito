@@ -37,7 +37,10 @@ public class Product {
 	public Product() {
 
 	}
-    
+	
+
+
+
 	public Product(String nombre, String descripcion, String marca, float precio) {
 		super();
 		this.nombre = nombre;
@@ -65,7 +68,7 @@ public class Product {
 	public Integer getIdProduct() {
 		return idProduct;
 	}
-	public void setId(Integer idProduct) {
+	public void setIdProduct(Integer idProduct) {
 		this.idProduct = idProduct;
 	}
 	public String getNombre() {

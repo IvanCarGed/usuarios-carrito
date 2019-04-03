@@ -7,21 +7,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <link rel="stylesheet" type="text/css"
-	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+	th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}" />
 
 <title>Índice</title>
 </head>
 <body>
     <div th:replace="/header :: header"></div>
 
-	<br>
-
-	<br>
-	<div class="container">
-		<h2>Tienda IE-Shop</h2>
-		<p>
-			Bienvenido <span sec:authentication="principal.username">Usuario</span>
-		</p>
+	<div class="container" style="display: flex; justify-content: center; align-items: center;">
+		<h2>Bienvenido a IE-Shop</h2>
 	</div>
 
 	

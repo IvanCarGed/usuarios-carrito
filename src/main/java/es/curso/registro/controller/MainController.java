@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import es.curso.registro.model.LineaPedido;
 import es.curso.registro.model.Pedido;
+import es.curso.registro.model.Product;
 import es.curso.registro.model.Role;
 import es.curso.registro.model.User;
 import es.curso.registro.service.EstadoService;
@@ -40,7 +41,6 @@ public class MainController {
 	
     @GetMapping("/")
     public String root() {
-    	
         return "index";
     }
 
@@ -52,6 +52,7 @@ public class MainController {
     @GetMapping("/list-productos")
     public String listProductos(Model model, HttpSession session) {
     	session.setAttribute("orderLines", orderLines);
+    	model.addAttribute("producto", new Product());
     	model.addAttribute("listaProductos", productService.getAll());
         return "list-productos";
     }

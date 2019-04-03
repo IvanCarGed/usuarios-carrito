@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
@@ -8,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <link rel="stylesheet" type="text/css"
-	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+	th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}" />
 
 <title>IE-Shop</title>
 </head>
@@ -17,19 +16,15 @@
 		<script type="text/javascript"
 			th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
 		<script type="text/javascript"
-			th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
-		<nav class="navbar navbar-inverse navbar-fixed-top">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed"
-						data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-						aria-controls="navbar">
-						<span class="sr-only">Toggle navigation</span> <span
-							class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#" th:href="@{/}">IE-Shop</a>
-				</div>
+			th:src="@{/webjars/bootstrap/4.1.0/js/bootstrap.min.js}"></script>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-info">
+			<a class="navbar-brand" href="/">IE-Shop</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
 
 				<div id="navbar" class="collapse navbar-collapse">
@@ -45,6 +40,25 @@
 
 					</ul>
 				</div>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item dropdown" sec:authorize="isAuthenticated()"><a
+						class="nav-link dropdown-toggle" href="#"
+						id="navbarDropdownMenuLink" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false"
+						sec:authentication="principal.username"></a>
+						<div class="dropdown-menu"
+							aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="#">Carrito</a> <a
+								class="dropdown-item" th:href="@{/logout}">Salir</a>
+						</div></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/list-productos}">Productos</a></li>
+					<li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')"><a
+						th:href="@{/addProduct}" class="nav-link">Añadir Producto</a></li>
+					<li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')"><a
+						th:href="@{/admin/home}" class="nav-link">Administrar Cuentas</a></li>
+				</ul>
 			</div>
 		</nav>
 	</div>
@@ -52,3 +66,5 @@
 
 </body>
 </html>
+
+
