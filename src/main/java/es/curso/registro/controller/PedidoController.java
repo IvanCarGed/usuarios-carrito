@@ -79,10 +79,10 @@ public class PedidoController {
 		
 
         Mail mail = new Mail();
-        mail.setFrom("no-reply@memorynotfound.com");
-        mail.setTo("info@memorynotfound.com");
-        mail.setSubject("Sending Simple Email with JavaMailSender Example");
-        mail.setContent("This tutorial demonstrates how to send a simple email using Spring Framework.");
+        mail.setFrom("no-reply@tuaplicaciondepedidos.com");
+        mail.setTo("ivancarged@gmail.com");
+        mail.setSubject("Pedido Actualizado");
+        mail.setContent("Hemos actualizado el estado de tu pedido a "+pedido.getEstado().getNombre());
 
         emailService.sendSimpleMessage(mail);
 		return "redirect:/list-pedidos";
