@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
@@ -36,6 +37,8 @@
 						<li><a th:href="@{/list-productos}">Productos</a></li>
 						<li sec:authorize="hasRole('ROLE_ADMIN')"><a
 							th:href="@{/addProduct}">Añadir Producto</a></li>
+						<li sec:authorize="hasRole('ROLE_ADMIN')"><a
+							th:href="@{/list-pedidos}">Administrar Pedidos</a></li>
 						<li sec:authorize="hasRole('ROLE_ADMIN')"><a
 							th:href="@{/admin/home}">Administrar Cuentas</a></li>
 						<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Salir</a></li>

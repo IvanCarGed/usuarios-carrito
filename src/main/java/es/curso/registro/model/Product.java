@@ -32,7 +32,7 @@ public class Product {
     private float precio;
     
     @OneToMany(mappedBy = "producto")
-    private Set<OrderLine> orderLines;
+    private Set<LineaPedido> orderLines;
     
 	public Product() {
 
@@ -47,7 +47,21 @@ public class Product {
 	}
 	
 
-	
+	/**
+	 * @param idProduct
+	 * @param nombre
+	 * @param descripcion
+	 * @param marca
+	 * @param precio
+	 */
+	public Product(Integer idProduct, String descripcion, String marca, String nombre, float precio) {
+		this.idProduct = idProduct;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.marca = marca;
+		this.precio = precio;
+	}
+
 	public Integer getIdProduct() {
 		return idProduct;
 	}

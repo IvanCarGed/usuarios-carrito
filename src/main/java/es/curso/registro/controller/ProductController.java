@@ -1,5 +1,7 @@
 package es.curso.registro.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,7 +35,7 @@ public class ProductController {
 	
     @GetMapping(value = "/updateProduct/{idProduct}")
 	public String updateProduct (Model model, @PathVariable("idProduct") Integer idProduct) {
-		Product producto = productService.getProductById(idProduct);
+		Optional<Product> producto = productService.getProductById(idProduct);
 		model.addAttribute("updateProduct", producto);
 		return "updateProduct";
     }

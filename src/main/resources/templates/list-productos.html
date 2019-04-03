@@ -27,6 +27,7 @@
 						<th>Descripción</th>
 						<th>Marca</th>
 						<th>Precio</th>
+						<th>Carrito</th>
 						<th sec:authorize="hasRole('ROLE_ADMIN')">Acciones</th>
 					</tr>
 				</thead>
@@ -38,11 +39,15 @@
 						<td th:text="${producto.descripcion}"></td>
 						<td th:text="${producto.marca}"></td>
 						<td th:text="${producto.precio}"></td>
+						<td><a
+							th:href="'/addOrderLine?idProduct='+${producto.idProduct}"
+							class="btn">Añadir al Carrito</a></td>
 						<td sec:authorize="hasRole('ROLE_ADMIN')">
 							<form action="#"
 								th:action="@{/updateProduct/} + ${{producto.idProduct}}"
 								method="get">
-								<button th:id="'table_entry_childs_button_' + ${producto.idProduct}"
+								<button
+									th:id="'table_entry_childs_button_' + ${producto.idProduct}"
 									type="submit">
 									<i>Modificar</i>
 								</button>
@@ -50,15 +55,49 @@
 							<form action="#"
 								th:action="@{/deleteProduct/} + ${{producto.idProduct}}"
 								method="get">
-								<button th:id="'table_entry_childs_button_' + ${producto.idProduct}"
+								<button
+									th:id="'table_entry_childs_button_' + ${producto.idProduct}"
 									type="submit">
 									<i>Eliminar</i>
 								</button>
-							</form>							
+							</form>
 						</td>
 					</tr>
 				</tbody>
 			</table>
+		</div>
+	</div>
+	<div class="container">
+		<h1>Carrito</h1>
+		<div class="row col-md-7 table-responsive">
+			<form action="#" th:action="@{/addOrder}" method="get">
+				<table id="orderLineTable" class="table">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Cantidad</th>
+							<th>Precio</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="linea, rowStat : ${session.orderLines}"
+							th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
+							<td th:text="${linea.producto.nombre}"></td>
+							<td th:text="${linea.cantidad}"></td>
+							<td th:text="${linea.producto.precio * linea.cantidad}">
+								
+							</td>
+						</tr>
+
+					</tbody>
+				</table>
+
+
+				<button>
+					<i>Hacer Pedido</i>
+				</button>
+			</form>
+
 		</div>
 	</div>
 

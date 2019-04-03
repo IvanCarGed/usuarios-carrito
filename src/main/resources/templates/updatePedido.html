@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+
+<title>Editar Pedido</title>
+</head>
+<body>
+	<div th:replace="/header :: header"></div>
+
+
+	<br />
+	<br />
+	<br />
+	<div class="container">
+
+		<h1>
+			Pedido id: <span th:text="${pedido.idPedido}"></span>
+		</h1>
+		<form action="#" method="post" th:action="@{/updatePedido}" th:object="${pedido}">
+		<div class="form-group">
+				<input path="direccion"
+					class="form-control" type="hidden" required="required"
+					th:field="*{idPedido}" />
+			</div>
+			<div class="form-group">
+				<label path="direccion">Direccion</label> <input path="direccion"
+					class="form-control" type="text" required="required"
+					th:field="*{direccion}" />
+			</div>
+			<div class="form-group">
+				<label path="comentario">Comentario</label> <input path="comentario"
+					class="form-control" type="text" required="required"
+					th:field="*{comentario}" />
+			</div>
+			<div class="form-group">
+				<label path="estado">Estado</label> 
+
+					 <select path="estado"
+					class="form-control" required="required"
+					th:field="*{estado.idEstado}">
+					<option th:each="estado : ${estados}" th:value="${estado.idEstado}"
+						th:text="${estado.nombre}" th:selected="${estado.idEstado==pedido.estado.idEstado}"></option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label path="precio">Precio Final</label> <input path="precio"
+					class="form-control" type="number" required="required"
+					th:field="*{precioFinal}" readonly />
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-success">Editar Pedido</button>
+			</div>
+		</form>
+
+	</div>
+
+</body>
+</html>

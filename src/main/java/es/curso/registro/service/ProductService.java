@@ -1,13 +1,15 @@
 package es.curso.registro.service;
 
 import java.util.List;
+import java.util.Optional;
+
 import es.curso.registro.model.Product;
 
 public interface ProductService {
 
 	List<Product> getAll();
 	
-	Product getProductById(Integer idProduct);
+	Optional<Product> getProductById(Integer idProduct);
 	
 	void addProduct(String nombre, String descripcion, String marca, float precio);
 	
