@@ -45,6 +45,7 @@ public class LineaPedidoController {
 		lineasPedido.add(lp);
 		
 		model.addAttribute("listaProductos", productService.getAll());
+		session.setAttribute("orderLines", lineasPedido);
 		return "list-productos";
 	}
 	

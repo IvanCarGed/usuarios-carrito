@@ -35,7 +35,7 @@
 						sec:authentication="principal.username"></a>
 						<div class="dropdown-menu"
 							aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" href="#">Carrito</a> <a
+							<div th:replace="/carrito :: carrito"></div> <a
 								class="dropdown-item" th:href="@{/logout}">Salir</a>
 						</div></li>
 					<li class="nav-item"><a class="nav-link"
