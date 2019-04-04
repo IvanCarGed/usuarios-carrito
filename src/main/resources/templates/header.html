@@ -30,17 +30,17 @@
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item"><a class="nav-link"
 						th:href="@{/list-productos}">Productos</a></li>
-					<li class="nav-item dropdown"><a
+					<li class="nav-item dropdown" sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"><a
 						class="nav-link dropdown-toggle" href="#"
 						id="navbarDropdownMenuLink" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false">Tu carrito</a>
 						<div class="dropdown-menu bg-info"
 							aria-labelledby="navbarDropdownMenuLink">
-							<div th:replace="/carrito :: carrito"></div>
+							<div th:replace="/carrito :: carrito" ></div>
 						</div></li>
-					<li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')"><a
+					<li class="nav-item" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_DINAMIZADOR')"><a
 						th:href="@{/addProduct}" class="nav-link">Añadir Producto</a></li>
-					<li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')"><a
+					<li class="nav-item" sec:authorize="hasAnyRole('ROLE_ENCARGADO', 'ROLE_ADMIN')"><a
 						th:href="@{/list-pedidos}" class="nav-link">Administrar
 							Pedidos</a></li>
 					<li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')"><a
