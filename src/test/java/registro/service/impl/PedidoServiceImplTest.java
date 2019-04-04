@@ -4,9 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,15 +20,15 @@ import es.curso.registro.model.Estado;
 import es.curso.registro.model.LineaPedido;
 import es.curso.registro.model.Pedido;
 import es.curso.registro.model.Product;
-import es.curso.registro.service.LineaPedidoService;
+import es.curso.registro.service.PedidoService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = { Application.class })
-public class LineaPedidoServiceImplTest {
+public class PedidoServiceImplTest {
 
 	private EmbeddedDatabase db;
 	@Autowired
-	private LineaPedidoService lineaPedidoService;
+	private PedidoService pedidoService;
 
 	private static int cantidad = 18;
 	private static Double precioFinal = 999.99;
@@ -43,63 +40,58 @@ public class LineaPedidoServiceImplTest {
 	private Product productoSim2 = new Product(998, "descripcion Sim2", "marca Sim2", "nombre Sim2", 999);
 	private LineaPedido lineaPedidoSim = new LineaPedido(999, cantidad, pedidoSim, productoSim);
 	private LineaPedido lineaPedidoSim2 = new LineaPedido(998, cantidad, pedidoSim2, productoSim2);
-	private List<LineaPedido> finded = new ArrayList<LineaPedido>();
+	private Pedido finded = new Pedido();
 
 	@Before
 	public void setup() {
 
-		db = new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2)
-				.addScript("create-db.sql")
-				.addScript("insert-data.sql")
-				.build();
+		db = new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).addScript("create-db.sql")
+				.addScript("insert-data.sql").build();
 	}
 
 	@After
 	public void delete() {
-		db = new EmbeddedDatabaseBuilder()
-				.setType(EmbeddedDatabaseType.H2)
-				.addScript("drop-db.sql")
-				.build();
+		db = new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).addScript("drop-db.sql").build();
 	}
 
 	@Test
 	public void testGetAll() {
-
-		assertNotNull(lineaPedidoService.getAll());
-		assertEquals(lineaPedidoService.getAll().get(0).getClass(), LineaPedido.class);
+		assertNotNull(pedidoService.getAll());
+		assertEquals(pedidoService.getAll().get(0).getClass(), Pedido.class);
 	}
 
+//	@Test
+//	public void testGetPedidoById() {
+//
+//		Pedido p = pedidoService.getPedidoById(1);
+//		assertNotNull(pedidoService.getPedidoById(1).toString());
+////		assertEquals(pedidoService.getPedidoById(1).getPrecioFinal(), precioFinal);
+//	}
+
 	@Test
-	public void testAddLineaPedidoLineaPedido() {
-		Integer sizeBefore = lineaPedidoService.getAll().size();
-		lineaPedidoService.addLineaPedido(lineaPedidoSim);
-		Integer sizeAfterInsertion = lineaPedidoService.getAll().size();
+	public void testAddPedidoPedido() {
+
+		Integer sizeBefore = pedidoService.getAll().size();
+		pedidoService.addPedido(pedidoSim);
+		Integer sizeAfterInsertion = pedidoService.getAll().size();
 
 		assertTrue(sizeAfterInsertion == sizeBefore + 1);
 	}
 
 	@Test
-	public void testFindByPedido() {
-		
-		assertNotNull(lineaPedidoService.findByPedido(pedidoSim.getIdPedido()));
-		assertEquals(lineaPedidoService.findByPedido(pedidoSim.getIdPedido()).getClass(), finded.getClass());
+	public void testUpdatePedido() {
+
+		String cambioEnComentario = "Comentario cambiado para testear.";
+		pedidoSim.setComentario(cambioEnComentario);
+		pedidoService.updatePedido(pedidoSim);
+
+		assertEquals(pedidoSim.getComentario(), "Comentario cambiado para testear.");
 	}
 
-	@Test
-	public void testAddAll() {
-		List<LineaPedido> lineas = new ArrayList<LineaPedido>();
-		
-		lineas.add(lineaPedidoSim);
-		lineas.add(lineaPedidoSim2);
-		
-		Integer sizeBefore = lineaPedidoService.getAll().size();
-		
-		lineaPedidoService.addAll(lineas);
-		
-		Integer sizeAfterInsertion = lineaPedidoService.getAll().size();
-
-		assertTrue(sizeAfterInsertion == sizeBefore + lineas.size());
-
-	}
+//	@Test
+//	public void testBuscar() {
+//		assertNotNull(pedidoService.buscar(pedidoSim));
+//		assertEquals(pedidoService.buscar(pedidoSim).get(0).getClass(), LineaPedido.class);
+//	}
 
 }
