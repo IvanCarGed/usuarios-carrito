@@ -32,6 +32,7 @@ public class LineaPedidoController {
 	public String addOrderLine(Model model, @RequestParam Integer idProduct, HttpSession session) {
 		List<LineaPedido> lineasPedido = (List<LineaPedido>) session.getAttribute("orderLines");
 		Product producto = productService.getProductById(idProduct);
+		model.addAttribute("producto", new Product());
 
 		for (int i = 0; i < lineasPedido.size(); i++) {
 			if (lineasPedido.get(i).getProducto().getIdProduct().equals(idProduct)) {
@@ -41,6 +42,7 @@ public class LineaPedidoController {
 			}
 		}
 
+		
 		LineaPedido lp = new LineaPedido(cantidad, producto);
 		lineasPedido.add(lp);
 		
@@ -50,7 +52,7 @@ public class LineaPedidoController {
 	
 	@PostMapping(value = "/addOrderLine")
 	public String addOrderLine(Model model, Integer quantity, Product producto, Pedido pedido) {
-		
+		model.addAttribute("producto", new Product());
 		lineaPedidoService.addLineaPedido(cantidad, producto, pedido);
 		return "redirect:/list-productos";
 	}

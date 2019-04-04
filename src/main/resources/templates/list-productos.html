@@ -23,7 +23,7 @@
 		<div class="row"
 			style="align-items: flex-start; flex-flow: row-reverse;">
 			<form class="form-inline my-2 my-lg-8" th:action="@{/searchProduct}"
-				th:object="${producto}" method="post">
+				 th:object="${producto}" method="post">
 				<div class="form-group">
 					<label for="nombre" class="control-label"></label> <input
 						class="form-control form-control-info" th:field="*{nombre}" type="text"
@@ -74,40 +74,40 @@
 		</div>
 	</div>
 	
-<!-- 	<div class="container"> -->
-<!-- 		<h1>Carrito</h1> -->
-<!-- 		<div class="row col-md-7 table-responsive"> -->
-<!-- 			<form action="#" th:action="@{/addOrder}" method="get"> -->
-<!-- 				<table id="orderLineTable" class="table"> -->
-<!-- 					<thead> -->
-<!-- 						<tr> -->
-<!-- 							<th>Nombre</th> -->
-<!-- 							<th>Cantidad</th> -->
-<!-- 							<th>Precio</th> -->
-<!-- 						</tr> -->
-<!-- 					</thead> -->
-<!-- 					<tbody> -->
-<!-- 						<tr th:each="linea, rowStat : ${session.orderLines}" -->
-<!-- 							th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'"> -->
-<!-- 							<td th:text="${linea.producto.nombre}"></td> -->
-<!-- 							<td th:text="${linea.cantidad}"></td> -->
-<!-- 							<td th:text="${linea.producto.precio * linea.cantidad}"> -->
+	<div class="container">
+		<h1>Carrito</h1>
+		<div class="row col-md-7 table-responsive">
+			<form action="#" th:action="@{/addOrder}" method="get">
+				<table id="orderLineTable" class="table">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Cantidad</th>
+							<th>Precio</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="linea, rowStat : ${session.orderLines}"
+							th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
+							<td th:text="${linea.producto.nombre}"></td>
+							<td th:text="${linea.cantidad}"></td>
+							<td th:text="${linea.producto.precio * linea.cantidad}">
 								
-<!-- 							</td> -->
-<!-- 						</tr> -->
+							</td>
+						</tr>
 
-<!-- 					</tbody> -->
-<!-- 				</table> -->
+					</tbody>
+				</table>
 
 
-<!-- 				<button> -->
-<!-- 					<i>Hacer Pedido</i> -->
-<!-- 				</button> -->
-<!-- 			</form> -->
+				<button>
+					<i>Hacer Pedido</i>
+				</button>
+			</form>
 
-<!-- 		</div> -->
-<!-- 	</div> -->
-<!-- 	</tbody> -->
+		</div>
+	</div>
+	</tbody>
 
 </body>
 </html>
