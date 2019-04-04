@@ -16,9 +16,6 @@
 
 	<div th:replace="/header :: header"></div>
 
-	<br>
-
-	<br>
 	<div class="container">
 		<h1>Detalles del pedido</h1>
 
@@ -26,16 +23,18 @@
 			<form th:action="@{/addOrder}" method="post" modelAttribute="order">
 
 				<div class="form-group">
-					<label for="direccion">Direccion</label> <input type="text"
-						name="direccion" id="direccion" />
+					<label for="direccion" class="control-label"></label> <input
+						class="form-control form-control-info" type="text"
+						name="direccion" id="direccion" placeholder="Dirección" />
 				</div>
 				<div class="form-group">
-					<label for="comentario">Comentario</label> <input type="text"
-						name="comentario" id="comentario" />
+					<label for="comentario" class="control-label"></label> <input
+						class="form-control form-control-info" type="text"
+						name="comentario" id="comentario" placeholder="Comentario" />
 				</div>
 
-				<table id="orderLineTable" class="table">
-					<thead>
+				<table id="orderLineTable" class="table table-bordered table-active">
+					<thead class="thead-dark">
 						<tr>
 							<th>Nombre</th>
 							<th>Cantidad</th>
@@ -43,8 +42,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="linea, rowStat : ${session.orderLines}"
-							th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
+						<tr th:each="linea, rowStat : ${session.orderLines}">
 							<td th:text="${linea.producto.nombre}"></td>
 							<td th:text="${linea.cantidad}"></td>
 							<td th:text="${linea.producto.precio * linea.cantidad}"></td>

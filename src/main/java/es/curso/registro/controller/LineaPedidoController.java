@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import es.curso.registro.model.LineaPedido;
 import es.curso.registro.model.Pedido;
@@ -33,11 +34,12 @@ public class LineaPedidoController {
 		List<LineaPedido> lineasPedido = (List<LineaPedido>) session.getAttribute("orderLines");
 		Product producto = productService.getProductById(idProduct);
 		model.addAttribute("producto", new Product());
+		model.addAttribute("addOk", Boolean.TRUE);
 
 		for (int i = 0; i < lineasPedido.size(); i++) {
 			if (lineasPedido.get(i).getProducto().getIdProduct().equals(idProduct)) {
 				lineasPedido.get(i).setCantidad(lineasPedido.get(i).getCantidad() + 1);
-				model.addAttribute("listaProductos", productService.getAll());
+				model.addAttribute("listaProductos", productService.getAll());				
 				return "list-productos";
 			}
 		}

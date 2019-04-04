@@ -14,32 +14,32 @@
 <body>
 	<div th:fragment="carrito">
 		<div class="container">
-			<h7>Carrito</h7>
 			<div class="row">
 				<form action="#" th:action="@{/addOrder}" method="get">
-					<table id="orderLineTable" class="table">
-						<thead>
-							<tr>
-								<th>Nombre</th>
-								<th>Cantidad</th>
-								<th>Precio</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="linea, rowStat : ${session.orderLines}"
-								th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
-								<td th:text="${linea.producto.nombre}"></td>
-								<td th:text="${linea.cantidad}"></td>
-								<td th:text="${linea.producto.precio * linea.cantidad}"></td>
-							</tr>
+					<div class="table-responsive-sm">
+						<table id="orderLineTable" class="table table-hover">
+							<thead>
+								<tr class="bg-info">
+									<th>Nombre</th>
+									<th>Cantidad</th>
+									<th>Precio</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="linea, rowStat : ${session.orderLines}"
+									class="bg-info">
+									<td th:text="${linea.producto.nombre}"></td>
+									<td th:text="${linea.cantidad}"></td>
+									<td th:text="${linea.producto.precio * linea.cantidad}"></td>
+								</tr>
 
-						</tbody>
-					</table>
+							</tbody>
+						</table>
+					</div>
 
+					<input type="submit" class="form-control btn btn-secondary"
+						value="Hacer pedido" />
 
-					<button>
-						<i>Hacer Pedido</i>
-					</button>
 				</form>
 
 			</div>

@@ -14,59 +14,55 @@
 <body>
 	<div th:replace="/header :: header"></div>
 
-
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-
 	<div class="container">
-		<form method="post" th:action="@{/buscar-pedido}" th:object="${pedido}"
-			class="form">
-			<div class="form-group">
-				<label path="estado">Estado</label> <select path="estado"
-					class="form-control" required="required"
-					th:field="*{estado.idEstado}">
-					<option th:each="estado : ${estados}" th:value="${estado.idEstado}"
-						th:text="${estado.nombre}"></option>
-				</select>
-			</div>
-			<div class="form-group col-12 justify-content-center my-5">
-				<button type="submit" class="btn btn-success">Buscar</button>
-			</div>
-		</form>
-	</div>
+		<br> <br>
+		<div class="row" style="align-items: space-between;">
+			<div id="listadoPedidos" class="col-sm-9">
+				<h1>Pedidos</h1>
+				<div class="row col-sm-9 table-responsive">
+					<table id="pedidosTable" class="table">
+						<thead>
+							<tr>
+								<th>Direccion</th>
+								<th>Comentario</th>
+								<th>Estado</th>
+								<th>Precio Final</th>
 
-	<div class="container">
-		<h1>Pedidos</h1>
-		<div class="row col-md-7 table-responsive">
-			<table id="pedidosTable" class="table">
-				<thead>
-					<tr>
-						<th>Direccion</th>
-						<th>Comentario</th>
-						<th>Estado</th>
-						<th>Precio Final</th>
-
-						<th sec:authorize="hasRole('ROLE_ADMIN')">Acciones</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="pedido, rowStat: ${listaPedidos}"
-						th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
-						<td th:text="${pedido.direccion}"></td>
-						<td th:text="${pedido.comentario}"></td>
-						<td th:text="${pedido.estado.nombre}"></td>
-						<td th:text="${pedido.precioFinal}"></td>
-						<td><a th:href="'/updatePedido?idPedido='+${pedido.idPedido}"
-							class="btn">Editar Pedido</a></td>
-					</tr>
-				</tbody>
-			</table>
+								<th sec:authorize="hasRole('ROLE_ADMIN')">Acciones</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="pedido, rowStat: ${listaPedidos}"
+								th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
+								<td th:text="${pedido.direccion}"></td>
+								<td th:text="${pedido.comentario}"></td>
+								<td th:text="${pedido.estado.nombre}"></td>
+								<td th:text="${pedido.precioFinal}"></td>
+								<td><a
+									th:href="'/updatePedido?idPedido='+${pedido.idPedido}"
+									class="btn">Editar Pedido</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div id="estadosFormulario" class="col-sm-3">
+				<form method="post" th:action="@{/buscar-pedido}"
+					th:object="${pedido}" class="form">
+					<div class="form-group">
+						<label path="estado">Estado</label> <select path="estado"
+							class="form-control" required="required"
+							th:field="*{estado.idEstado}">
+							<option th:each="estado : ${estados}"
+								th:value="${estado.idEstado}" th:text="${estado.nombre}"></option>
+						</select>
+						<div class="form-group col-12 justify-content-center my-5">
+							<button type="submit" class="btn btn-success">Buscar</button>
+						</div>
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
-
 </body>
 </html>
