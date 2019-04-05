@@ -23,6 +23,7 @@ public class LineaPedidoController {
 
 	private int cantidad = 1;
 
+	
 	@Autowired
 	LineaPedidoService lineaPedidoService;
 
