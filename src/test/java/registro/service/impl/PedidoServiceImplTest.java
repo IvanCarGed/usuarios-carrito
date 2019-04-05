@@ -65,7 +65,7 @@ public class PedidoServiceImplTest {
 //
 //		Pedido p = pedidoService.getPedidoById(1);
 //		assertNotNull(pedidoService.getPedidoById(1).toString());
-////		assertEquals(pedidoService.getPedidoById(1).getPrecioFinal(), precioFinal);
+//		assertEquals(pedidoService.getPedidoById(1).getPrecioFinal(), precioFinal);
 //	}
 
 	@Test
@@ -80,12 +80,14 @@ public class PedidoServiceImplTest {
 
 	@Test
 	public void testUpdatePedido() {
-
+		
+		pedidoService.addPedido(pedidoSim);
+		Pedido paraUpdate = pedidoService.getPedidoById(pedidoSim.getIdPedido());
 		String cambioEnComentario = "Comentario cambiado para testear.";
-		pedidoSim.setComentario(cambioEnComentario);
-		pedidoService.updatePedido(pedidoSim);
+		paraUpdate.setComentario(cambioEnComentario);
+		pedidoService.updatePedido(paraUpdate);
 
-		assertEquals(pedidoSim.getComentario(), "Comentario cambiado para testear.");
+		assertEquals(paraUpdate.getComentario(), "Comentario cambiado para testear.");
 	}
 
 //	@Test

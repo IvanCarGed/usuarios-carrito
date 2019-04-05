@@ -9,7 +9,7 @@ CREATE TABLE `pedido` (
 CREATE TABLE `estado` (
   `id_estado` int(11) NOT NULL,
   `nombre` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id_estado`)
+
 ) ;
 CREATE TABLE `linea_pedido` (
   `id_linea_pedido` int(11) NOT NULL,
@@ -23,13 +23,13 @@ CREATE TABLE `product` (
   `marca` varchar(255) DEFAULT NULL,
   `nombre` varchar(255) DEFAULT NULL,
   `precio` float DEFAULT NULL,
-  PRIMARY KEY (`id_product`)
+
 );
 
 CREATE TABLE `role` (
   `id` bigint(20) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+
 ) ;
 
 CREATE TABLE `user` (
@@ -38,7 +38,7 @@ CREATE TABLE `user` (
   `email` varchar(255) DEFAULT NULL,
   `nombre` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+
 );
 CREATE TABLE `users_roles` (
   `user_id` bigint(20) NOT NULL,

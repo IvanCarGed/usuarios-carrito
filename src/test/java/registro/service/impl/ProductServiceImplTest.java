@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,7 +30,6 @@ public class ProductServiceImplTest {
 	@Autowired
 	ProductService productService;
 	
-
 	private Product productoSim = new Product(999, "descripcion Sim", "marca Sim", "nombre Sim", 999);
 	private Product productoSim2 = new Product(998, "descripcion Sim2", "marca Sim2", "nombre Sim2", 999);
 	
@@ -51,33 +52,60 @@ public class ProductServiceImplTest {
 	}
 
 
-//	@Test
-//	public void testAddProductProduct() {
-//		Integer sizeBefore = productService.getAll().size();
-//		productService.addProduct(productoSim);
-//		Integer sizeAfterInsertion = productService.getAll().size();
-//
-//		assertTrue(sizeAfterInsertion == sizeBefore + 1);
-//	}
+	@Test
+	public void testAddProductProduct() {
+		
+		Integer sizeBefore = productService.getAll().size();
+		productService.addProduct(productoSim);
+		Integer sizeAfterInsertion = productService.getAll().size();
+
+		assertTrue(sizeAfterInsertion == sizeBefore + 1);
+	}
 
 //	@Test
 //	public void testUpdateProduct() {
-//		fail("Not yet implemented");
+//		productService.addProduct(productoSim);
+//		String cambioDescripcion = "Cambio en descipción para testing.";
+//		Product paraUpdate = productService.getProductById(productoSim.getIdProduct());
+//		paraUpdate.setDescripcion(cambioDescripcion);
+//		productService.updateProduct(paraUpdate);
+//		
+//		assertEquals(productService.getProductById(paraUpdate.getIdProduct()), cambioDescripcion);
 //	}
-//
+
 //	@Test
 //	public void testDeleteProduct() {
-//		fail("Not yet implemented");
+//		
+//		productService.addProduct(4, "descripcion producto Test 004", "marca Test 004", "nombre producto Test 004", 2.5);
+//		Integer sizeBefore = productService.getAll().size();
+//		productService.deleteProduct(4);
+//		Integer sizeAfterDelete = productService.getAll().size();
+//		
+//		assertTrue(sizeBefore == sizeAfterDelete + 1);
 //	}
-//
-//	@Test
-//	public void testGetProductById() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	public void testBuscar() {
-//		fail("Not yet implemented");
-//	}
+
+	@Test
+	public void testGetProductById() {
+		
+		assertNotNull(productService.getProductById(1));
+		assertEquals(productService.getProductById(1).getDescripcion(), "descripcion producto Test 001");
+	}
+
+	@Test
+	public void testBuscar() {
+		Product paraBuscar = new Product("nombre producto Test 001", "", "", 0);
+		Product paraBuscar2 = new Product("", "descripcion producto Test 002", "", 0);
+		Product paraBuscar3 = new Product("", "", "", 33);
+		
+		List<Product> buscado = productService.buscar(paraBuscar);
+		List<Product> buscado2 = productService.buscar(paraBuscar2);
+		List<Product> buscado3 = productService.buscar(paraBuscar3);
+		assertNotNull(buscado);
+		assertEquals(buscado.get(0).getNombre(), paraBuscar.getNombre());
+		assertNotNull(buscado2);
+		assertEquals(buscado2.get(0).getDescripcion(), paraBuscar2.getDescripcion());
+		assertNotNull(buscado3);
+		assertTrue(buscado3.get(0).getPrecio() == paraBuscar3.getPrecio());
+	}
 
 }
