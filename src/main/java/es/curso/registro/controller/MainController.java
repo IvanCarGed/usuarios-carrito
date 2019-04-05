@@ -81,12 +81,60 @@ public class MainController {
         return "listaUsuarios";
     }
     
+    @GetMapping("/admin/quitarPrivilegiosDinamizador/{id}")
+    public String quitarPrivilegiosDinamizador(Model model, 
+    		@PathVariable("id") Long id) {
+        User user =  userService.findById(id);
+        Role roleToDelete = userService.getRoleWithName(Constantes.ROLE_DINAMIZADOR);
+        userService.deleteRolesWithRoleIdUserId(roleToDelete.getId(), id);
+        Role roleToAdd = userService.getRoleWithName(Constantes.ROLE_USER);
+        user.getRoles().add(roleToAdd);
+        userService.update(user);
+        return "index";
+    }
+    
+    @GetMapping("/admin/darPrivilegiosDinamizador/{id}")
+    public String darPrivilegiosDinamizador(Model model, 
+    		@PathVariable("id") Long id) {
+        User user =  userService.findById(id);
+        Role roleToAdd = userService.getRoleWithName(Constantes.ROLE_DINAMIZADOR);
+        user.getRoles().clear();
+        user.getRoles().add(roleToAdd);
+        userService.update(user);
+        return "index";
+    }
+    
+    @GetMapping("/admin/quitarPrivilegiosEncargado/{id}")
+    public String quitarPrivilegiosEncargado(Model model, 
+    		@PathVariable("id") Long id) {
+        User user =  userService.findById(id);
+        Role roleToDelete = userService.getRoleWithName(Constantes.ROLE_ENCARGADO);
+        userService.deleteRolesWithRoleIdUserId(roleToDelete.getId(), id);
+        Role roleToAdd = userService.getRoleWithName(Constantes.ROLE_USER);
+        user.getRoles().add(roleToAdd);
+        userService.update(user);
+        return "index";
+    }
+    
+    @GetMapping("/admin/darPrivilegiosEncargado/{id}")
+    public String darPrivilegiosEncargado(Model model, 
+    		@PathVariable("id") Long id) {
+        User user =  userService.findById(id);
+        Role roleToAdd = userService.getRoleWithName(Constantes.ROLE_ENCARGADO);
+        user.getRoles().clear();
+        user.getRoles().add(roleToAdd);
+        userService.update(user);
+        return "index";
+    }
+    
     @GetMapping("/admin/quitarPrivilegios/{id}")
     public String quitarPrivilegiosAdmin(Model model, 
     		@PathVariable("id") Long id) {
         User user =  userService.findById(id);
         Role roleToDelete = userService.getRoleWithName(Constantes.ROLE_ADMIN);
         userService.deleteRolesWithRoleIdUserId(roleToDelete.getId(), id);
+        Role roleToAdd = userService.getRoleWithName(Constantes.ROLE_USER);
+        user.getRoles().add(roleToAdd);
         userService.update(user);
         return "index";
     }
@@ -96,6 +144,7 @@ public class MainController {
     		@PathVariable("id") Long id) {
         User user =  userService.findById(id);
         Role roleToAdd = userService.getRoleWithName(Constantes.ROLE_ADMIN);
+        user.getRoles().clear();
         user.getRoles().add(roleToAdd);
         userService.update(user);
         return "index";

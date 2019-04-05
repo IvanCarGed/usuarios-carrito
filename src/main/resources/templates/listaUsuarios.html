@@ -19,14 +19,14 @@
 	<div th:replace="/header :: header"></div>
 
 	<div class="container">
-		<div class="row col-md-7 table-responsive">
+		<div class="row col-md-12 table-responsive">
 			<table id="customerTable" class="table">
 				<thead>
-					<tr>
+					<tr class="text-center">
 						<th>Nombre</th>
 						<th>Apellido</th>
 						<th>Email</th>
-						<th>Privilegios</th>
+						<th colspan="2">Privilegios</th>
 
 					</tr>
 				</thead>
@@ -39,22 +39,43 @@
 						<td th:text="${user.email}"></td>
 						<td>
 							<form action="#"
-								th:action="@{/admin/quitarPrivilegios/} + ${{user.id}}"
-								method="get">
-								<button th:id="'table_entry_childs_button_' + ${user.id}"
-									type="submit">
-									<i class="fas fa-user"></i>
-								</button>
-							</form>
-							<form action="#"
 								th:action="@{/admin/darPrivilegios/} + ${{user.id}}"
 								method="get">
 								<button th:id="'table_entry_childs_button_' + ${user.id}"
-									type="submit">
-									<i class="fas fa-user-tie"></i>
-								</button>
+									type="submit" class="btn-block">Dar Administrador</button>
 							</form>
-
+							<form action="#"
+								th:action="@{/admin/darPrivilegiosDinamizador/} + ${{user.id}}"
+								method="get">
+								<button th:id="'table_entry_childs_button_' + ${user.id}"
+									type="submit" class="btn-block">Dar Dinamizador</button>
+							</form>
+							<form action="#"
+								th:action="@{/admin/darPrivilegiosEncargado/} + ${{user.id}}"
+								method="get">
+								<button th:id="'table_entry_childs_button_' + ${user.id}"
+									type="submit" class="btn-block">Dar Encargado</button>
+							</form>
+						</td>
+						<td>
+							<form action="#"
+								th:action="@{/admin/quitarPrivilegios/} + ${{user.id}}"
+								method="get">
+								<button th:id="'table_entry_childs_button_' + ${user.id}"
+									type="submit" class="btn-block">Quitar Administrador</button>
+							</form>
+							<form action="#"
+								th:action="@{/admin/quitarPrivilegiosDinamizador/} + ${{user.id}}"
+								method="get">
+								<button th:id="'table_entry_childs_button_' + ${user.id}"
+									type="submit" class="btn-block">Quitar Dinamizador</button>
+							</form>
+							<form action="#"
+								th:action="@{/admin/quitarPrivilegiosEncargado/} + ${{user.id}}"
+								method="get">
+								<button th:id="'table_entry_childs_button_' + ${user.id}"
+									type="submit" class="btn-block">Quitar Encargado</button>
+							</form>
 						</td>
 					</tr>
 				</tbody>

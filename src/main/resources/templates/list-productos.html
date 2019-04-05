@@ -73,14 +73,14 @@
 						<p class="card-text" th:text="${producto.descripcion}"></p>
 					</div>
 					<div class="card-footer">
-						<a th:href="@{'/addOrderLine'(idProduct= ${producto.idProduct})}" class="btn btn-success float-left btn-sm"><i
+						<a th:href="@{'/addOrderLine'(idProduct= ${producto.idProduct})}" class="btn btn-success float-left btn-sm" sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"><i
 							class="fas fa-cart-arrow-down"></i></a> <a
 							th:href="@{'/updateProduct'(idProduct = ${producto.idProduct})}"
-							sec:authorize="hasRole('ROLE_ADMIN')"
+							sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_DINAMIZADOR')"
 							class="btn btn-warning float-right btn-sm"><i
 							class="fas fa-pencil-alt"></i></a> <a
 							th:href="@{'/deleteProduct'(idProduct = ${producto.idProduct})}"
-							sec:authorize="hasRole('ROLE_ADMIN')"
+							sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_DINAMIZADOR')"
 							class="btn btn-danger float-right btn-sm"><i
 							class="fas fa-trash-alt"></i></a>
 					</div>
@@ -88,40 +88,6 @@
 			</div>
 		</div>
 	</div>
-	
-<!-- 	<div class="container"> -->
-<!-- 		<h1>Carrito</h1> -->
-<!-- 		<div class="row col-md-7 table-responsive"> -->
-<!-- 			<form action="#" th:action="@{/addOrder}" method="get"> -->
-<!-- 				<table id="orderLineTable" class="table"> -->
-<!-- 					<thead> -->
-<!-- 						<tr> -->
-<!-- 							<th>Nombre</th> -->
-<!-- 							<th>Cantidad</th> -->
-<!-- 							<th>Precio</th> -->
-<!-- 						</tr> -->
-<!-- 					</thead> -->
-<!-- 					<tbody> -->
-<!-- 						<tr th:each="linea, rowStat : ${session.orderLines}" -->
-<!-- 							th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'"> -->
-<!-- 							<td th:text="${linea.producto.nombre}"></td> -->
-<!-- 							<td th:text="${linea.cantidad}"></td> -->
-<!-- 							<td th:text="${linea.producto.precio * linea.cantidad}"> -->
-								
-<!-- 							</td> -->
-<!-- 						</tr> -->
-
-<!-- 					</tbody> -->
-<!-- 				</table> -->
-
-
-<!-- 				<button> -->
-<!-- 					<i>Hacer Pedido</i> -->
-<!-- 				</button> -->
-<!-- 			</form> -->
-
-<!-- 		</div> -->
-<!-- 	</div> -->
 
 </body>
 </html>
